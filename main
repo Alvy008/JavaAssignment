@@ -1,0 +1,44 @@
+package SearchEngine;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class GUI extends JFrame implements ActionListener {
+	JLabel label1;
+	JButton EnterButton;
+	JTextField SearchBar;
+
+	public GUI(String title) {
+		super(title);
+		setSize(500,500);
+		JPanel panel = new JPanel();
+		add(panel);
+		panel.setLayout(new FlowLayout());
+		
+		label1 = new JLabel("Search Engine");
+		panel.add(label1);
+		
+		JTextField answer = new JTextField("Search...");
+		panel.add(answer);
+		
+		EnterButton= new JButton("Enter");
+		panel.add(EnterButton);
+		EnterButton.setToolTipText("Enters your search");
+		EnterButton.addActionListener(this);
+		setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}
