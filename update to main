@@ -1,0 +1,67 @@
+package SearchEngine;
+
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileSystemView;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+//import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class GUI extends JFrame implements ActionListener {
+	JLabel label1;
+	JButton EnterButton;
+	JTextField SearchBar;
+	
+    GUI(){
+    }
+
+	public GUI(String title) {
+		super(title);
+		setSize(500,500);
+		JPanel panel = new JPanel();
+		add(panel);
+		panel.setLayout(new FlowLayout());
+		
+		label1 = new JLabel("Welcome to Search Engine");
+		panel.add(label1);
+		
+		//JTextField answer = new JTextField("Search...");
+		//panel.add(answer);
+		
+		EnterButton= new JButton("Choose Files");
+		panel.add(EnterButton);
+		EnterButton.setToolTipText("Enters your search");
+		EnterButton.addActionListener(this);
+		
+		GUI f1 = new GUI();
+		EnterButton.addActionListener(f1);
+		setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		 if (e.getSource()==EnterButton) {
+		
+			
+		//going into the folder where I have multiple files for the user to choose from.
+		JFileChooser j  = new JFileChooser();
+		j.setCurrentDirectory(new File("C:\\Users\\shabu\\OneDrive\\Desktop\\JavaAssignmentFiles"));
+		// j.showOpenDialog(null);
+		
+		
+		//This selects a file to open
+		int response = j.showOpenDialog(null);
+		 if(response == JFileChooser.APPROVE_OPTION) {
+			 File file = new File(j.getSelectedFile().getAbsolutePath());
+			 System.out.println(file);
+		 }
+		 }
+	}
+}
