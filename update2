@@ -1,0 +1,97 @@
+package SearchEngine;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import javax.swing.JFileChooser;
+//import javax.swing.filechooser.FileSystemView;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+//import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class GUI extends JFrame implements ActionListener {
+	JLabel label1;
+	JButton AllFilesButton;
+	JButton SearchButton;
+	JTextField SearchBar;
+	
+    GUI(){
+    }
+
+	public GUI(String title) {
+		super(title);
+		setSize(500,500);
+		JPanel panel = new JPanel();
+		add(panel);
+		panel.setLayout(new FlowLayout());
+		
+		label1 = new JLabel("Welcome to Search Engine");
+		panel.add(label1);
+		
+		
+		AllFilesButton= new JButton("Show All  Files");
+		panel.add(AllFilesButton);
+		AllFilesButton.setToolTipText("Enters your search");
+		AllFilesButton.addActionListener(this);
+		
+		SearchButton= new JButton("Search  Files");
+		panel.add(SearchButton);
+		SearchButton.setToolTipText("Enters your search");
+		SearchButton.addActionListener(this);
+		
+		JTextField answer = new JTextField("Search...");
+		panel.add(answer);
+		
+		GUI f1 = new GUI();
+		AllFilesButton.addActionListener(f1);
+		SearchButton.addActionListener(f1);
+		setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		 if (e.getSource()==AllFilesButton) {
+		
+			
+		//going into the folder where I have multiple files for the user to choose from.
+		JFileChooser j  = new JFileChooser();
+		j.setCurrentDirectory(new File("C:\\Users\\shabu\\OneDrive\\Desktop\\JavaAssignmentFiles"));
+		// j.showOpenDialog(null);
+		
+		
+		//This selects a file to open
+		int response = j.showOpenDialog(null);
+		 if(response == JFileChooser.APPROVE_OPTION) {
+			 File file = new File(j.getSelectedFile().getAbsolutePath());
+			 System.out.println(file);
+		 }
+		 	}
+		 if (e.getSource()==SearchButton) {
+		try {
+			FileReader reader = new FileReader("cars.txt");
+			int data = reader.read();
+			while(data !=- 1) {
+				System.out.println((char)data);
+				data = reader.read();
+			}
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		JFileChooser j  = new JFileChooser();
+		j.setCurrentDirectory(new File("C:\\Users\\shabu\\OneDrive\\Desktop\\JavaAssignmentFiles"));
+		j.showOpenDialog(null);		 
+		 }
+	}
+}
