@@ -1,0 +1,47 @@
+package SearchEngine;
+
+import java.io.BufferedReader;
+import java.io.File;
+//import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class control {
+
+	public static void main(String [] args) throws IOException {
+		GUI gui = new GUI();
+		 
+		//help on reading file from online resources
+	        File[] files = {new File("cars.txt"), new File("colours.txt"),new File("animals.txt"),new File("ColoursOfTheRainbow.txt"),new File("Pets.txt")};
+	       
+	        ArrayList<String> CarsContent = new ArrayList<String>();
+	        
+	        // Fetching all the files
+	        for (File file : files) {
+	            if(file.isFile()) {
+	                BufferedReader inputStream = null;
+	                String line;
+	                try {
+	                    inputStream = new BufferedReader(new FileReader(file));
+	                    while ((line = inputStream.readLine()) != null) {
+	                     	FileContent.add(line);
+	                      
+	                        
+	                    }
+	                    System.out.println(FileContent);
+	                }catch(IOException e) {
+	                	System.out.println(e);
+	                }
+	                finally {
+	                    if (inputStream != null) {
+	                        inputStream.close();
+	                    }
+	                }
+	            }
+	        }
+	     
+		
+		
+	}
+}
