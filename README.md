@@ -1,5 +1,5 @@
 # JavaAssignment
-
+SEARCH ENGINE
 1. List of classes, with a description.
 
 I have 3 classes, one for the gui and where the comparing of the search input and file content gets compared, one to read the files and store their content in an array, and the control to just call both of these classes.
