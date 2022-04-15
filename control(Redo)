@@ -1,0 +1,15 @@
+/*
+ * This is the Main Method where the GUI class and the ReadingFiles class are called
+ * 
+ * */
+
+package SearchEngine;
+
+
+public class control {
+
+	public static void main(String [] args)  {
+		GUI gui = new GUI();
+		ReadingFiles read = new ReadingFiles();
+		}
+    }
