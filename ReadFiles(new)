@@ -1,0 +1,138 @@
+/*
+ * This is the ReadingFiles class where all the files are read through 
+ * Each files contents are put into a separate list 
+ * 
+ * */
+package SearchEngine;
+
+//These are all the imports that have been used in this class
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+//declaring the class
+public class ReadingFiles  {
+	
+	//creating the method
+	public static void ReadFile() throws IOException{
+	
+		//Reading through the file cars
+		try {
+	      File myObj = new File("cars.txt");
+	      Scanner myReader = new Scanner(myObj);
+	      while (myReader.hasNextLine()) {
+	        String data = myReader.nextLine();
+	      //  System.out.println(data);
+	      }
+	      myReader.close();
+	    } catch (FileNotFoundException e) {
+	      System.out.println("An error occurred.");
+	      e.printStackTrace();
+	    }
+		//creating a list, and putting the contents of the file cars into the list
+	List<String> CarsContent = new ArrayList<String>();
+  CarsContent = Files.readAllLines(Paths.get("cars.txt"));
+  String[] array = CarsContent.toArray(new String[0]);
+  for (String eachString : array)
+  {
+      System.out.println(eachString);
+  }
+  
+//Reading through the file animals
+	try {
+				File myObj = new File("animals.txt");
+				Scanner myReader = new Scanner(myObj);
+				while (myReader.hasNextLine()) {
+				String data2 = myReader.nextLine();
+				//  System.out.println(data);
+			}
+				myReader.close();
+	    	} 
+				catch (FileNotFoundException e) {
+					System.out.println("An error occurred.");
+					e.printStackTrace();
+			}
+	//creating a list, and putting the contents of the file cars into the list
+				List<String> AnimalsContent = new ArrayList<String>();
+				AnimalsContent = Files.readAllLines(Paths.get("animals.txt"));
+				String[] array2 = AnimalsContent.toArray(new String[0]);
+				for (String eachString : array2)
+			{
+				System.out.println(eachString);
+		}
+
+				//Reading through the file colours
+		try {
+				File myObj = new File("colours.txt");
+				Scanner myReader = new Scanner(myObj);
+				while (myReader.hasNextLine()) {
+				String data3 = myReader.nextLine();
+				//  System.out.println(data);
+			}
+				myReader.close();
+		}
+			catch (FileNotFoundException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+		//creating a list, and putting the contents of the file cars into the list
+				List<String> ColoursContent = new ArrayList<String>();
+				ColoursContent = Files.readAllLines(Paths.get("colours.txt"));
+				String[] array3 = ColoursContent.toArray(new String[0]);
+				for (String eachString : array3)
+		{
+					System.out.println(eachString);
+		}
+
+				//Reading through the file pets
+			try {
+					File myObj = new File("Pets.txt");
+					Scanner myReader = new Scanner(myObj);
+					while (myReader.hasNextLine()) {
+					String data4 = myReader.nextLine();
+					//  System.out.println(data);
+			}
+					myReader.close();
+		} 
+					catch (FileNotFoundException e) {
+					System.out.println("An error occurred.");
+					e.printStackTrace();
+		}
+			//creating a list, and putting the contents of the file cars into the list
+				List<String> PetsContent = new ArrayList<String>();
+				PetsContent = Files.readAllLines(Paths.get("Pets.txt"));
+				String[] array4 = PetsContent.toArray(new String[0]);
+				for (String eachString : array4)
+		{
+					System.out.println(eachString);
+		}
+				
+				//Reading through the file Colours Of The Rainbow
+			try {
+					File myObj = new File("ColoursOfTheRainbow.txt");
+					Scanner myReader = new Scanner(myObj);
+					while (myReader.hasNextLine()) {
+					String data5 = myReader.nextLine();
+					//  System.out.println(data);
+			}
+					myReader.close();
+		} 
+					catch (FileNotFoundException e) {
+					System.out.println("An error occurred.");
+					e.printStackTrace();
+		}
+			//creating a list, and putting the contents of the file cars into the list
+				List<String> RainbowContent = new ArrayList<String>();
+				RainbowContent = Files.readAllLines(Paths.get("ColoursOfTheRainbow.txt"));
+				String[] array5 = RainbowContent.toArray(new String[0]);
+				for (String eachString : array5)	
+		{
+					System.out.println(eachString);
+		}
+	  	}
+	}
