@@ -1,0 +1,133 @@
+/*
+ * Java Assignment 2022 OOP 
+ * Name : Alvina Jacob (C20376453)
+ * First Edit Date: 20/03/2022
+ * Last Edit Date: 15/04/2022
+ * This is a Java Application that allows user to search keywords
+ * The app takes this keyword and matches it with a file that exists, if there is one.
+ * 
+ * This is the GUI class, where the code for creating the GUI is
+ * 
+ * */
+
+package SearchEngine;
+
+
+//These are all the imports that have been used in this class
+import java.io.File;
+import java.io.FileReader;
+import javax.swing.JFileChooser;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+
+
+//declaring the class
+public class GUI extends JFrame implements ActionListener {
+	
+
+	 //Creating a label, button and textfield as part of the GUI, for the user to interact with
+	JLabel label;
+	JButton SearchButton,AllFilesButton;
+	JTextField Answer;
+	
+	GUI(){
+	label = new JLabel();
+	SearchButton = new JButton();
+	AllFilesButton = new JButton();
+	Answer = new JTextField();
+	
+	//Creating a layout for the GUI
+	this.setTitle("Assignment:Search Engine");
+	this.setSize(350,400);
+	this.getContentPane().setBackground(new Color( 98,20,255,9));
+	this.setLayout(new FlowLayout());
+	
+	//Setting the Label
+	label.setText("Welcome to Search Engine!");
+	label.setFont(new  Font ("serif", Font.PLAIN,20));
+	label.setVerticalAlignment(JLabel.TOP);
+	label.setHorizontalAlignment(JLabel.CENTER);
+	
+	//Setting the Search Button, which the user will click on to enter their search
+	SearchButton.setText("Search");
+	SearchButton.setBounds(100,100,250,50);
+	SearchButton.addActionListener(this);
+	
+	//Setting the All Files Button, which the user will click on if they want to display all the existing files
+	AllFilesButton.setText("Show All Files");
+	AllFilesButton.setBounds(100,100,250,50);
+	AllFilesButton.addActionListener(this);
+
+	//This is where the user will enter what they want to search for
+	Answer.setPreferredSize(new Dimension(250,40));
+	Answer.setText("Enter your Search");
+	
+	
+	//adding all the elements to the GUI
+	this.add(label);
+	this.add(AllFilesButton);
+	this.add(Answer);
+	this.add(SearchButton);
+	
+	//Allowing it to be shown in the GUI
+	this.setVisible(true);
+	}
+
+	//This part of the code waits for the user to perform an action, so that when a certain button is clicked it will follow the instructions and execute them.
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		 if (e.getSource()==AllFilesButton) {
+				
+				//going into the folder where I have multiple files for the user to choose from.
+				JFileChooser j  = new JFileChooser();
+				j.setCurrentDirectory(new File("C:\\Users\\shabu\\OneDrive\\Desktop\\JavaAssignmentFiles"));
+				j.showOpenDialog(null);		 
+		 }	
+		 
+		 if (e.getSource()==SearchButton) {
+			 
+			 //Checking if the search the user entered matches the content of any of the files that exist, cars, colours, pets, rainbow and animals
+			 String input = Answer.getText() ;
+			 for(int i = 0; i < CarsContent; i++) {
+				 while(CarsContent[i].contains(input)){
+					 System.out.println("Your search exists in the Cars File");
+				 }
+			 }
+			 for(int i = 0; i < ColoursContent; i++) {
+				 while(ColoursContent[i].contains(input)){
+					 System.out.println("Your search exists in the Colours File");
+					 
+				 }
+			 }
+			 for(int i = 0; i < AnimalsContent; i++) {
+				 while(AnimalsContent[i].contains(input)){
+					 System.out.println("Your search exists in the Animals File");
+				 }
+			 }
+			 for(int i = 0; i < PetsContent; i++) {
+				 while(PetsContent[i].contains(input)){
+					 System.out.println("Your search exists in the Pets File");
+				 }
+			 }
+			 for(int i = 0; i < RainbowContent; i++) {
+				 while(RainbowContent[i].contains(input)){
+					 System.out.println("Your search exists in the Rainbow File");
+				 }
+			 }	 
+			 
+			
+			 //This line just returns what the user entered in
+			System.out.println(Answer.getText());
+		 }
+		 
+	 }
+}
+
